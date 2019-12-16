@@ -4,39 +4,41 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
- class Zi1{
-    private int m=0;
-   private Lock lock= new  ReentrantLock();
-   final Condition  condition=lock.newCondition();
+class Zi1 {
+    private int m = 0;
+    private Lock lock = new ReentrantLock();
+    final Condition condition = lock.newCondition();
 
-    public  void increment() throws InterruptedException {
+    public void increment() throws InterruptedException {
         lock.lock();
-                try {
-                    while(m==0){
-                        condition.await();
-                    }
-                    --m;
-                    condition.signalAll();
-                    System.out.println(Thread.currentThread().getName()+"\t"+m);
+        try {
+            while (m == 0) {
+                condition.await();
+            }
+            --m;
+            condition.signalAll();
+            System.out.println(Thread.currentThread().getName() + "\t" + m);
 
-                } finally {
-                 lock.unlock();
-                }
-      }
-    public  void decrement() throws InterruptedException {
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public void decrement() throws InterruptedException {
         lock.lock();
-                try {
-                    while(m!=0){
-                        condition.await();
-                    }
-                    ++m;
-                    condition.signalAll();                    System.out.println(Thread.currentThread().getName()+"\t"+m);
+        try {
+            while (m != 0) {
+                condition.await();
+            }
+            ++m;
+            condition.signalAll();
+            System.out.println(Thread.currentThread().getName() + "\t" + m);
 
-                } finally {
-                 lock.unlock();
-                }
+        } finally {
+            lock.unlock();
+        }
 
-       }
+    }
 }
 
 
@@ -44,7 +46,7 @@ public class ThreadWaitNotify1 {
 
     public static void main(String[] args) {
         Zi1 zi = new Zi1();
-        new Thread(()->{
+        new Thread(() -> {
             for (int i = 0; i < 10; i++) {
                 try {
                     zi.increment();
@@ -52,8 +54,8 @@ public class ThreadWaitNotify1 {
                     e.printStackTrace();
                 }
             }
-        },"A").start();
-        new Thread(()->{
+        }, "A").start();
+        new Thread(() -> {
             for (int i = 0; i < 10; i++) {
                 try {
                     zi.decrement();
@@ -61,8 +63,8 @@ public class ThreadWaitNotify1 {
                     e.printStackTrace();
                 }
             }
-        },"B").start();
-        new Thread(()->{
+        }, "B").start();
+        new Thread(() -> {
             for (int i = 0; i < 10; i++) {
                 try {
                     zi.decrement();
@@ -70,8 +72,8 @@ public class ThreadWaitNotify1 {
                     e.printStackTrace();
                 }
             }
-        },"C").start();
-        new Thread(()->{
+        }, "C").start();
+        new Thread(() -> {
             for (int i = 0; i < 10; i++) {
                 try {
                     zi.increment();
@@ -79,6 +81,6 @@ public class ThreadWaitNotify1 {
                     e.printStackTrace();
                 }
             }
-        },"D").start();
+        }, "D").start();
     }
 }
