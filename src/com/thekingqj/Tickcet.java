@@ -16,7 +16,7 @@ class Tickect1 {
                 System.out.println(Thread.currentThread().getName() + "第：" + (m--) + "张票被卖出啦");
                 System.out.println("HH33365585");
                 System.out.println("HH33365585");
-                System.out.println("HH33365585");
+                System.out.println("HH33365585111");
             }
         } finally {
             lock.unlock();
