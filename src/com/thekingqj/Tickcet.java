@@ -24,17 +24,18 @@ class Tickect1 {
 
     }
 }
+
 public class Tickcet {
 
     public static void main(String[] args) {
-        ExecutorService threadpool= Executors.newFixedThreadPool(3);
-        Tickect1 t1=new Tickect1();
+        ExecutorService threadpool = Executors.newFixedThreadPool(3);
+        Tickect1 t1 = new Tickect1();
         try {
-            for (int i = 1; i <=300 ; i++) {
+            for (int i = 1; i <= 300; i++) {
 
-               threadpool.execute(()->{
-                           t1.buy();
-                       });
+                threadpool.execute(() -> {
+                    t1.buy();
+                });
             }
         } finally {
             threadpool.shutdown();
