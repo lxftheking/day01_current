@@ -4,6 +4,10 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+
+/**
+ * 三个线程之间的顺序调用。A->B->C
+ */
 class ShareResource1 {
     private int flag = 1;
     private Lock lock = new ReentrantLock();
