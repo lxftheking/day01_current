@@ -13,7 +13,7 @@ class Tickect1 {
         lock.lock();
         try {
             if (m > 0) {
-                System.out.println(Thread.currentThread().getName() + "第：" + (m--) + "张票被卖出");
+                System.out.println(Thread.currentThread().getName() + "第：" + (m--) + "张票被卖出啦");
             }
         } finally {
             lock.unlock();
