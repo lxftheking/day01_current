@@ -1,6 +1,6 @@
 package com.thekingqj;
 
-import java.util.Random;
+
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
@@ -12,7 +12,7 @@ public class SemaphoreDemo {
             new Thread(() -> {
                 boolean flag=false;
                 try {
-                    semaphore.acquire();
+                    semaphore.acquire();//获取信号量
                     flag=true;
                     System.out.println(Thread.currentThread().getName()+"\t"+"抢到车位");
                     TimeUnit.SECONDS.sleep(2);
@@ -21,7 +21,7 @@ public class SemaphoreDemo {
                     e.printStackTrace();
                 }finally {
                     if(flag){
-                        semaphore.release();
+                        semaphore.release();//释放当前信号量
                     }
                 }
             }, String.valueOf(i)).start();
