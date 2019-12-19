@@ -10,7 +10,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  *          ArrayList线程不安全的，在add的时候并没有加锁，导致多线程add没有执行完时进行了读，导致修改次数不一致，报并发修改异常
  *          即：modCount != expectedModCount=false出现的问题集合的修改次数和迭代器的修改次数不一致导致的问题，
  * 3.   解决方案
-            //Collections.synchronizedList(new ArrayList<>());
+  v          //Collections.synchronizedList(new ArrayList<>());
  *          //new Vector();
  *          //new CopyOnWriteArrayList();（写时复制，读写分离）
  *
