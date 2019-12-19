@@ -8,7 +8,6 @@ import java.util.concurrent.locks.ReentrantLock;
 class Tickect {
     private int m = 30;
     private Lock lock = new ReentrantLock();
-
     public void buy() {
         lock.lock();
         try {
